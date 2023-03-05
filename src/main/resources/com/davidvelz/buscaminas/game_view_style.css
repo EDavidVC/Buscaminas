@@ -1,0 +1,11 @@
+#tableGame{
+    -fx-border-color:black;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
+    }
+.bomb{
+    -fx-background-color: #F00A0A;
+}
+.flag{
+    -fx-background-color: #0057E5;
+}

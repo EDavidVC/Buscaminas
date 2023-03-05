@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx"
+    xmlns:fx="http://javafx.com/fxml"
+    alignment="CENTER"
+    fx:controller="com.davidvelz.buscaminas.WelcomeView"
+    id="main_content_pane">
+
+    <Label text="🅱🆄🆂🅲🅰🅼🅸🅽🅰🆂"
+           id="welcome_title"
+    />
+    <FlowPane alignment="CENTER">
+        <Button text="10 x 10"/>
+        <Button text="15 x 15"/>
+        <Button text="20 x 20"/>
+    </FlowPane>
+    <FlowPane alignment="CENTER">
+        <CheckBox text="Personalizado"/>
+        <TextField promptText="Inserte un numero"/>
+    </FlowPane>
+    <Button text="Jugar" fx:id="playButton" onMouseClicked="#startGame"/>
+
+
+</VBox>
+

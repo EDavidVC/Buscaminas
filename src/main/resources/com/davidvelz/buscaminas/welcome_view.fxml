@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<VBox xmlns="http://javafx.com/javafx"
-    xmlns:fx="http://javafx.com/fxml"
-    alignment="CENTER"
-    fx:controller="com.davidvelz.buscaminas.WelcomeView"
-    id="main_content_pane">
 
-    <Label text="🅱🆄🆂🅲🅰🅼🅸🅽🅰🆂"
-           id="welcome_title"
-    />
-    <FlowPane alignment="CENTER">
-        <Button text="10 x 10"/>
-        <Button text="15 x 15"/>
-        <Button text="20 x 20"/>
-    </FlowPane>
-    <FlowPane alignment="CENTER">
-        <CheckBox text="Personalizado"/>
-        <TextField promptText="Inserte un numero"/>
-    </FlowPane>
-    <Button text="Jugar" fx:id="playButton" onMouseClicked="#startGame"/>
+<VBox fx:id="main_content_pane" alignment="CENTER" spacing="30" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.davidvelz.buscaminas.WelcomeView">
+
+    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" scaleX="2" scaleY="2">
+        <image>
+            <Image url="@img/buscaminastitle.png" />
+        </image>
+    </ImageView>
+    <HBox alignment="CENTER" spacing="15">
+        <Button fx:id="bottonModeOne" onMouseClicked="#setModeOne" styleClass="noSelectedMode, mode" text="Fácil" />
+        <Button fx:id="bottonModeTwo" onMouseClicked="#setModeTwo" styleClass="noSelectedMode, mode" text="Medio" />
+        <Button fx:id="bottonModeThree" onMouseClicked="#setModeThree" styleClass="noSelectedMode, mode" text="Dificil" />
+    </HBox>
+
+    <CheckBox fx:id="customCheckBox" onMouseClicked="#customAction" styleClass="mode" text="Personalizado" />
+
+    <GridPane id="customTable" fx:id="customTable" alignment="center" hgap="10" scaleY="0" vgap="10">
+        <Label text="Alto" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="customWidth" promptText="Inserte un numero" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Label text="Ancho" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="customHeight" promptText="Inserte un numero" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label text="Bombas" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="customBomb" promptText="Inserte un numero" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    </GridPane>
+
+    <Button fx:id="playButton" alignment="CENTER" onMouseClicked="#startGame" text="Jugar" />
+
 
 
 </VBox>
-

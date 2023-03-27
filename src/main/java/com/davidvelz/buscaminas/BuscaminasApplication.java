@@ -1,9 +1,12 @@
 package com.davidvelz.buscaminas;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -11,9 +14,16 @@ public class BuscaminasApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.setResizable(false);
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                    @Override
+                    public void handle(WindowEvent event) {
+                        Platform.exit();
+                        System.exit(0);
+                    }
+                });
 
 
-        SceneController sceneController;
+                SceneController sceneController;
         sceneController = new SceneController(stage);
 
 

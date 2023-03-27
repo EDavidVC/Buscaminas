@@ -1,7 +1,9 @@
 package com.davidvelz.buscaminas;
 
+import com.davidvelz.buscaminas.Objects.ModeGame;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,29 +23,34 @@ public class SceneController {
         WelcomeView welcomeView = fxmlLoader.getController();
         welcomeView.setSceneController(this);
 
-        principalStage.setTitle("BIEMBENIDO");
-        principalStage.setMaxHeight(800);
-        principalStage.setMaxWidth(600);
-        principalStage.setScene(scene);
-        principalStage.show();
+        startStage(scene, "Biembenido");
 
     }
-    public void activeGameView(int modeGame) throws IOException {
+    public void activeGameView(ModeGame modeGame) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(BuscaminasApplication.class.getResource("game_view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         scene.getStylesheets().add(getClass().getResource("game_view_style.css").toExternalForm());
 
+        GridPane gameGridView = (GridPane) scene.lookup("#gameView");
+        gameGridView.setMinHeight(this.principalStage.getHeight());
+        gameGridView.setMinWidth(this.principalStage.getWidth());
         GameView gameView = fxmlLoader.getController();
         gameView.setSceneController(this);
         gameView.setModeGame(modeGame);
         gameView.startTable();
+        gameView.loadgamePropierties();
 
-        principalStage.setTitle("BUSCAMINAS");
-        principalStage.setMaxHeight(800);
-        principalStage.setMaxWidth(600);
+        startStage(scene, "Buscaminas");
+
+    }
+    private void startStage(Scene scene, String title){
+        principalStage.setTitle(title);
+        principalStage.setMaxHeight(600);
+        principalStage.setMaxWidth(800);
+        principalStage.setMinHeight(600);
+        principalStage.setMinWidth(800);
         principalStage.setScene(scene);
         principalStage.show();
-
     }
 }

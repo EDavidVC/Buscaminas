@@ -1,7 +1,37 @@
-#welcome_title{
-    -fx-font-size: 30px;
-    -fx-font-weight: 700;
-}
 #main_content_pane{
-    -fx-background-color: #B0E1FA ;
+    -fx-background-color: #009999;
+}
+
+.selectedMode{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#D92C0E,  #200702);
+    -fx-font-size: 15px;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-padding: 5 10 6 10;
+
+}
+
+.selectedMode:hover {
+    -fx-background-color: linear-gradient(#200702, #D92C0E);
+    -fx-padding: 5 10 6 10;
+}
+
+.noSelectedMode{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-font-size: 15px;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-padding: 5 10 6 10;
+}
+
+.noSelectedMode:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+    -fx-padding: 5 10 6 10;
+}
+.alertMessage{
+    -fx-text-fill: red;
 }

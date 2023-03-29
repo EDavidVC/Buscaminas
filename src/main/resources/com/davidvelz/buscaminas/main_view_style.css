@@ -1,6 +1,9 @@
 #main_content_pane{
     -fx-background-color: #009999;
 }
+#poster{
+
+}
 
 .selectedMode{
     -fx-text-fill: white;
@@ -35,3 +38,4 @@
 .alertMessage{
     -fx-text-fill: red;
 }
+

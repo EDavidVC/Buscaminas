@@ -59,6 +59,7 @@ public class Buttons extends Button {
         initSize();
     }
 
+
     private void initSize(){
         setMaxSize(size, size);
         setMinSize(size, size);

@@ -1,33 +1,23 @@
 package com.davidvelz.buscaminas;
 
+import com.davidvelz.buscaminas.Decoration.BombsAnimated;
 import com.davidvelz.buscaminas.Objects.Buttons;
-import com.davidvelz.buscaminas.Objects.Cronometer;
+import com.davidvelz.buscaminas.Decoration.Cronometer;
 import com.davidvelz.buscaminas.Objects.ModeGame;
 import com.davidvelz.buscaminas.Objects.Vector;
-import com.davidvelz.buscaminas.decoration.numberFormat;
+import com.davidvelz.buscaminas.Decoration.numberFormat;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.geometry.Pos;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import org.controlsfx.control.spreadsheet.Grid;
 
 import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.ResourceBundle;
 
 public class GameView{
     //GameProperties
@@ -40,8 +30,6 @@ public class GameView{
     @FXML
     private Text modeGameClickCount;
     //Table Propierties
-    @FXML
-    private ScrollPane tableScroll;
     @FXML
     private GridPane tableGame;
     @FXML
@@ -69,6 +57,7 @@ public class GameView{
         return this.sceneController;
     }
     private void buttonClicked(Buttons button){
+
         if(!button.getStyleClass().contains("flag")){
             addClick();
 
@@ -76,17 +65,12 @@ public class GameView{
                 generatePositions(button.getX(), button.getY());
             }
             if(button.isBomb()){
-                for (Vector position : positions){
-                    Buttons buttonTMP = (Buttons) tableGame.lookup("#idx"+position.getX()+"y"+position.getY());
+                BombsAnimated bombsAnimated = new BombsAnimated(button, positions, tableGame);
+                bombsAnimated.startAnimation();
+                loseGame();
 
-                    buttonTMP.setDisable(true);
-                    buttonTMP.activeBomb();
-                    buttonTMP.getStyleClass().clear();
-                    buttonTMP.getStyleClass().add("bomb");
-                    //button.getStyleClass().add("bomb");
-                    //System.out.println(" EXPLOTA X: "+ position.getX() + " Y: " + position.getY());
-                }
             }else{
+                checkWin();
                 boolean running = true;
 
                 ArrayList<Buttons> emptyButtons = getButtons(button);
@@ -209,8 +193,9 @@ public class GameView{
         }
     }
     private void buttonSecondaryClicked(Buttons button){
+
         addClick();
-        if (!button.getStyleClass().contains("flag") && !button.getStyleClass().contains("question_pick")){
+        if (!button.getStyleClass().contains("flag") && !button.getStyleClass().contains("question_pick") && numberFormat.reformatNumber(modeGameFlagCount.getText()) > 0 ){
             button.getStyleClass().add("flag");
             modeGameFlagCount.setText(""+(numberFormat.reformatNumber(modeGameFlagCount.getText()) - 1 ));
         }else if (button.getStyleClass().contains("flag")){
@@ -225,7 +210,7 @@ public class GameView{
     private void addClick(){
         if (clickCount == 0) {
             cronometer = new Cronometer(cronometerText);
-            cronometer.startCronometer();
+            cronometer.resetCronometer();
         }
         clickCount++;
         modeGameClickCount.setText(new numberFormat(1, clickCount).getFormatedNumber());
@@ -234,12 +219,13 @@ public class GameView{
     public void startTable(){
         for (int x = 0; x<modeGame.getHeight(); x++){
             for (int y = 0; y<modeGame.getWidth(); y++){
+                String id = "idx"+x+"y"+y;
                 Buttons tempButton = new Buttons(x, y);
                 int sizeButton = 25;
                 tempButton.setPrefSize(sizeButton,sizeButton);
                 tempButton.setMinSize(sizeButton,sizeButton);
                 tempButton.setMaxSize(sizeButton,sizeButton);
-                tempButton.setId("idx"+x+"y"+y);
+                tempButton.setId(id);
                 tempButton.getStyleClass().add("buttonGame");
                 tempButton.setFocusTraversable(false);
                 tempButton.setOnMouseReleased(new EventHandler<MouseEvent>() {
@@ -252,11 +238,13 @@ public class GameView{
                         }
                     }
                 });
+
                 tableGame.add(tempButton, x, y);
             }
         }
 
-
+        loadgamePropierties();
+        resizeTable();
     }
     public void loadgamePropierties(){
         modeGameText.setText(""+this.modeGame.getHeight()+" x "+ this.modeGame.getWidth());
@@ -264,5 +252,42 @@ public class GameView{
         modeGameFlagCount.setText(""+modeGame.getCantBomb());
         modeGameClickCount.setText(""+clickCount);
         System.out.println(""+tableGame.getProperties());
+    }
+    public void resizeTable(){
+        this.tableGame.setAlignment(Pos.CENTER);
+        System.out.println(""+this.tableGame.getHeight());
+    }
+
+    public void giveUp(ActionEvent actionEvent) throws IOException {
+        sceneController.activeWelcomeView();
+    }
+
+    public void resetGame(ActionEvent actionEvent) throws IOException {
+        cronometer.stopCronometer();
+        cronometer = null;
+        sceneController.activeGameView(this.modeGame);
+    }
+    private void checkWin(){
+        int totalButtons = modeGame.getHeight() * modeGame.getWidth();
+        int totalEmptyButtons = totalButtons - modeGame.getCantBomb();
+        for (int x = 0; x<modeGame.getHeight(); x++){
+            for (int y = 0; y<modeGame.getWidth(); y++){
+                String id = "#idx"+x+"y"+y;
+                Buttons tempButton = (Buttons) tableGame.lookup(id);
+                if (tempButton.isDisable() && !tempButton.isBomb()){
+                    totalEmptyButtons --;
+                }
+
+            }
+        }
+        if (totalEmptyButtons <= 1){
+            System.out.println("Ganaste");
+        }
+    }
+    private void winGame(){
+
+    }
+    private void loseGame(){
+
     }
 }

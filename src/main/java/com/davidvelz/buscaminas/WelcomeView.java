@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class WelcomeView {
     private SceneController sceneController;
     @FXML
-    private VBox main_content_pane;
+    private GridPane main_content_pane;
 
     @FXML
     private Button bottonModeOne;
@@ -55,9 +55,22 @@ public class WelcomeView {
     }
     public void startGame(MouseEvent mouseEvent) throws IOException {
         if (customCheckBox.isSelected()){
-            int width =Integer.parseInt(customWidth.getText());
-            int height =Integer.parseInt(customHeight.getText());
-            int bomb =Integer.parseInt(customBomb.getText());
+            ModeGame tmpModeGame = new ModeGame();
+            int width = tmpModeGame.getWidth();
+            int height = tmpModeGame.getHeight();
+            int bomb = tmpModeGame.getCantBomb();
+            if(!customWidth.getText().isEmpty()){
+                width =Integer.parseInt(customWidth.getText());
+
+            }
+            if (!customHeight.getText().isEmpty()){
+                height =Integer.parseInt(customHeight.getText());
+
+            }
+            if (!customBomb.getText().isEmpty()){
+                bomb =Integer.parseInt(customBomb.getText());
+            }
+
             sceneController.activeGameView(new ModeGame(width, height, bomb));
         }else{
             if (modeGame == null){
@@ -150,7 +163,6 @@ public class WelcomeView {
         }
 
         if(customCheckBox.isSelected()){
-
             ScaleTransition st = new ScaleTransition(Duration.millis(500), customTable);
             st.setByX(0);
             st.setByY(1);

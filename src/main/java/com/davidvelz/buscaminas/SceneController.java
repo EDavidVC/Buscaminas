@@ -17,7 +17,7 @@ public class SceneController {
     public void activeWelcomeView() throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(BuscaminasApplication.class.getResource("welcome_view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(getClass().getResource("main_view_style.css").toExternalForm());
 
         WelcomeView welcomeView = fxmlLoader.getController();
@@ -29,7 +29,7 @@ public class SceneController {
     public void activeGameView(ModeGame modeGame) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(BuscaminasApplication.class.getResource("game_view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(getClass().getResource("game_view_style.css").toExternalForm());
 
         GridPane gameGridView = (GridPane) scene.lookup("#gameView");
@@ -39,17 +39,12 @@ public class SceneController {
         gameView.setSceneController(this);
         gameView.setModeGame(modeGame);
         gameView.startTable();
-        gameView.loadgamePropierties();
 
         startStage(scene, "Buscaminas");
 
     }
     private void startStage(Scene scene, String title){
         principalStage.setTitle(title);
-        principalStage.setMaxHeight(600);
-        principalStage.setMaxWidth(800);
-        principalStage.setMinHeight(600);
-        principalStage.setMinWidth(800);
         principalStage.setScene(scene);
         principalStage.show();
     }

@@ -1,4 +1,4 @@
-package com.davidvelz.buscaminas.decoration;
+package com.davidvelz.buscaminas.Decoration;
 
 import javafx.scene.control.TextField;
 

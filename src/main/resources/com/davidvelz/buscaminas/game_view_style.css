@@ -1,19 +1,20 @@
 #gameView{
     -fx-background-color: #009999;
 }
-#tableScroll{
+#tableGame{
     -fx-border-color:black;
-    -fx-border-width: 1;
+    -fx-border-width: 10;
     -fx-border-style: solid;
     }
 #tableGame Line {
     -fx-stroke   : #AEB6BF;
 }
-.bomb{
+.bomb {
     -fx-background-image: url('img/mine.png');
     -fx-background-size: 20, 20;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
+
 }
 .flag{
     -fx-background-image: url('img/flag.png');
@@ -27,9 +28,7 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
 }
-.button {
 
-}
 .information {
     -fx-background-color:
         linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),

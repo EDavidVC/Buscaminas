@@ -13,7 +13,9 @@ import java.io.IOException;
 public class BuscaminasApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        stage.setResizable(false);
+        stage.setResizable(true);
+        stage.setMinWidth(850);
+        stage.setMinHeight(600);
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                     @Override
                     public void handle(WindowEvent event) {

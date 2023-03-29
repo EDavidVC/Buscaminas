@@ -5,96 +5,76 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="gameView" alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.davidvelz.buscaminas.GameView">
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.davidvelz.buscaminas.GameView">
 
 
-
-    <ScrollPane fx:id="tableScroll" fitToHeight="true" fitToWidth="true" maxHeight="600" maxWidth="650" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.rowSpan="2" GridPane.valignment="CENTER">
-
-        <GridPane fx:id="tableGame" gridLinesVisible="true" />
-
-    </ScrollPane>
+    <GridPane fx:id="gameView" alignment="CENTER" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+        <ScrollPane GridPane.halignment="CENTER" GridPane.valignment="CENTER" GridPane.rowSpan="2">
+            <GridPane fx:id="tableGame" gridLinesVisible="true" />
+        </ScrollPane>
 
 
-    <GridPane fx:id="gameInformationTable" alignment="CENTER" hgap="10" maxHeight="250" maxWidth="100" minHeight="250" minWidth="100" prefWidth="100" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="0">
-        <Text text="BUSCAMINAS" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
-        <Text fx:id="modeGameText" text="0 x 0" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+        <GridPane fx:id="gameInformationTable" alignment="CENTER" GridPane.valignment="CENTER" GridPane.halignment="CENTER" hgap="10" maxHeight="250" maxWidth="100" minHeight="250" minWidth="100" prefWidth="100" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <Text text="BUSCAMINAS" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+            <Text fx:id="modeGameText" text="0 x 0" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
 
-        <ImageView fitHeight="25" fitWidth="25" pickOnBounds="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-            <image>
-                <Image url="@img/mine.png" />
-            </image>
-        </ImageView>
-        <Text text=":" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-        <Text fx:id="modeGameBombCount" text="00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <ImageView fitHeight="25" fitWidth="25" pickOnBounds="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                <image>
+                    <Image url="@img/mine.png" />
+                </image>
+            </ImageView>
+            <Text text=":" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Text fx:id="modeGameBombCount" text="00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
 
-        <ImageView fitHeight="25" fitWidth="25" pickOnBounds="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="3">
-            <image>
-                <Image url="@img/flag.png" />
-            </image>
-        </ImageView>
-        <Text text=":" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-        <Text fx:id="modeGameFlagCount" text="00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <ImageView fitHeight="25" fitWidth="25" pickOnBounds="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                <image>
+                    <Image url="@img/flag.png" />
+                </image>
+            </ImageView>
+            <Text text=":" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Text fx:id="modeGameFlagCount" text="00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
 
-        <ImageView fitHeight="25" fitWidth="25" pickOnBounds="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="4">
-            <image>
-                <Image url="@img/click.png" />
-            </image>
-        </ImageView>
-        <Text text=":" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-        <Text fx:id="modeGameClickCount" text="00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <ImageView fitHeight="25" fitWidth="25" pickOnBounds="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                <image>
+                    <Image url="@img/click.png" />
+                </image>
+            </ImageView>
+            <Text text=":" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Text fx:id="modeGameClickCount" text="00" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
 
-        <Text fx:id="cronometerText" text="00:00:00" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-      <columnConstraints>
-         <ColumnConstraints />
-         <ColumnConstraints />
-         <ColumnConstraints />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-      </rowConstraints>
+            <Text fx:id="cronometerText" text="00:00:00" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+
+        </GridPane>
+
+        <GridPane hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <ImageView fitHeight="25" fitWidth="25" pickOnBounds="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0">
+                <image>
+                    <Image url="@img/reset.png" />
+                </image>
+            </ImageView>
+            <Button fx:id="resetgame" text="Reiniciar" onAction="#resetGame" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+            <ImageView fitHeight="25" fitWidth="25" pickOnBounds="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                <image>
+                    <Image url="@img/flag.png" />
+                </image>
+            </ImageView>
+            <Button fx:id="giveUp" text="Rendirce" onAction="#giveUp" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+        </GridPane>
+        <rowConstraints>
+            <RowConstraints fillHeight="false" vgrow="ALWAYS" />
+            <RowConstraints fillHeight="false" vgrow="ALWAYS" />
+        </rowConstraints>
+        <columnConstraints>
+            <ColumnConstraints fillWidth="false" hgrow="ALWAYS" />
+            <ColumnConstraints fillWidth="false" hgrow="ALWAYS" maxWidth="150"/>
+        </columnConstraints>
 
     </GridPane>
 
-    <GridPane hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
-        <ImageView fitHeight="25" fitWidth="25" pickOnBounds="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0">
-            <image>
-                <Image url="@img/reset.png" />
-            </image>
-        </ImageView>
-        <Button fx:id="resetgame" text="Reiniciar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
-        <ImageView fitHeight="25" fitWidth="25" pickOnBounds="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-            <image>
-                <Image url="@img/flag.png" />
-            </image>
-        </ImageView>
-        <Button fx:id="giveUp" text="Rendirce" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-      <columnConstraints>
-         <ColumnConstraints />
-         <ColumnConstraints />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints />
-         <RowConstraints />
-      </rowConstraints>
-    </GridPane>
-    <rowConstraints>
-        <RowConstraints fillHeight="false" vgrow="ALWAYS" />
-      <RowConstraints />
-    </rowConstraints>
-    <columnConstraints>
-        <ColumnConstraints fillWidth="false" hgrow="ALWAYS" />
-      <ColumnConstraints />
-    </columnConstraints>
 
 
 
 
 
 
-</GridPane>
+</AnchorPane>

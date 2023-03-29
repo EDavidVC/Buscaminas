@@ -1,8 +1,9 @@
-package com.davidvelz.buscaminas.Objects;
+package com.davidvelz.buscaminas.Decoration;
 
-import com.davidvelz.buscaminas.decoration.numberFormat;
-import javafx.scene.control.TextField;
+import com.davidvelz.buscaminas.Decoration.numberFormat;
 import javafx.scene.text.Text;
+
+import java.util.ArrayList;
 
 public class Cronometer extends Thread{
     private boolean running;
